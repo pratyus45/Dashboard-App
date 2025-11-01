@@ -1,4 +1,20 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* THIS IS THE FIX:
+  It makes the app's root elements take 100% of the screen 
+  and removes the "black bar" problem.
+*/
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  /* Set a default background for the entire page */
+  @apply bg-gray-50;
+}
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

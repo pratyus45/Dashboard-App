@@ -37,8 +37,11 @@ const submissions = [
 export const initMockData = () => {
   if (!localStorage.getItem('users')) {
     localStorage.setItem('users', JSON.stringify(users));
+  }
+  if (!localStorage.getItem('assignments')) {
     localStorage.setItem('assignments', JSON.stringify(assignments));
+  }
+  if (!localStorage.getItem('submissions')) {
     localStorage.setItem('submissions', JSON.stringify(submissions));
-    console.log("Mock data seeded!");
   }
 };

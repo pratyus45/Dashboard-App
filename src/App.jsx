@@ -1,12 +1,11 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './context/AuthContext';
-import { initData } from './services/api';
+import { AuthProvider } from './context/AuthContext'; // Import AuthProvider
+import { useAuth } from './hooks/useAuth'; // Import useAuth
 import Layout from './components/Layout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 
-// Seed the "database" on app start
-initData();
+// DO NOT CALL initData() HERE ANYMORE
 
 /**
  * A wrapper to protect routes that require a logged-in user.
@@ -14,6 +13,14 @@ initData();
 const ProtectedRoute = ({ children }) => {
   const { currentUser } = useAuth();
   return currentUser ? children : <Navigate to="/login" replace />;
+};
+
+/**
+ * A wrapper for the login page to redirect if already logged in.
+ */
+const LoginRoute = ({ children }) => {
+  const { currentUser } = useAuth();
+  return currentUser ? <Navigate to="/" replace /> : children;
 };
 
 function App() {
@@ -28,12 +35,17 @@ function App() {
             </ProtectedRoute>
           }
         >
-          {/* Nested routes render inside Layout's <Outlet /> */}
           <Route index element={<Dashboard />} />
-          {/* You could add more protected routes here, e.g. /profile */}
         </Route>
         
-        <Route path="/login" element={<Login />} />
+        <Route 
+          path="/login" 
+          element={
+            <LoginRoute>
+              <Login />
+            </LoginRoute>
+          } 
+        />
       </Routes>
     </AuthProvider>
   );

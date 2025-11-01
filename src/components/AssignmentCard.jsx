@@ -1,6 +1,5 @@
 import ProgressBar from './ProgressBar';
 
-// A map to make statuses look nice
 const statusStyles = {
   pending: "bg-yellow-100 text-yellow-800",
   submitted: "bg-blue-100 text-blue-800",
@@ -19,14 +18,14 @@ export default function AssignmentCard({ assignment, role, onSubmit }) {
   const isPending = status === 'pending';
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 flex flex-col justify-between">
+    <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-xl">
       <div>
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
         <a 
           href={driveLink} 
           target="_blank" 
           rel="noopener noreferrer"
-          className="text-sm text-indigo-600 hover:underline mb-4 block"
+          className="text-sm text-indigo-600 hover:text-indigo-800 font-medium mb-4 block"
         >
           View Drive Link
         </a>
@@ -37,19 +36,22 @@ export default function AssignmentCard({ assignment, role, onSubmit }) {
           <div className="flex justify-between items-center mb-4">
             <span className="text-sm font-medium text-gray-500">Status:</span>
             <span 
-              className={`px-3 py-1 rounded-full text-sm font-semibold ${statusStyles[status] || 'bg-gray-100'}`}
+              className={`px-3 py-1 rounded-full text-xs font-semibold ${statusStyles[status] || 'bg-gray-100'}`}
             >
-              {status}
+              {status.toUpperCase()}
             </span>
           </div>
+          {/* This button calls the 'onSubmit' prop */}
           <button
             onClick={onSubmit}
             disabled={!isPending}
-            className={`w-full py-2 px-4 rounded-md font-semibold text-white
+            className={`w-full py-2.5 px-4 rounded-lg font-semibold text-white transition-all duration-200
               ${isPending 
-                ? 'bg-indigo-600 hover:bg-indigo-700' 
+                ? 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500' 
                 : 'bg-gray-400 cursor-not-allowed'
-              }`}
+              }
+              focus:outline-none focus:ring-2 focus:ring-offset-2
+            `}
           >
             {isPending ? 'Submit Assignment' : 'Submitted'}
           </button>
