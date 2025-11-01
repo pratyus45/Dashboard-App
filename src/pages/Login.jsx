@@ -6,14 +6,14 @@ export default function Login() {
   const { currentUser, login } = useAuth();
   const users = api.getUsers(); 
 
-  // --- THIS IS THE FIX ---
+  
   // Sort the users array to put admins on top
   const sortedUsers = users ? Object.values(users).sort((a, b) => {
     if (a.role === 'admin' && b.role !== 'admin') return -1;
     if (a.role !== 'admin' && b.role === 'admin') return 1;
     return 0;
   }) : [];
-  // --- END OF FIX ---
+ 
 
   if (currentUser) {
     return <Navigate to="/" replace />;

@@ -1,6 +1,6 @@
 // The raw data that we will use to "seed" our localStorage "database"
 const users = {
-  "student1": { id: "student1", name: "Rohan Sharma", role: "student" },
+  "student1": { id: "student1", name: "Abhijit", role: "student" },
   "student2": { id: "student2", name: "Priya Singh", role: "student" },
   "admin1": { id: "admin1", name: "Prof. Gupta", role: "admin" },
 };

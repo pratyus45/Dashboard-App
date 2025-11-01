@@ -27,11 +27,11 @@ export default function AdminDashboard() {
   // State for the student list
   const [allStudents, setAllStudents] = useState([]);
   
-  // *** NEW: State for editing a student ***
+  //  NEW: State for editing a student *
   const [currentStudentToEdit, setCurrentStudentToEdit] = useState(null);
   const [newStudentName, setNewStudentName] = useState('');
 
-  // --- Data Fetching ---
+  //  Data Fetching 
   const fetchDashboardData = () => {
     if (currentUser) {
       const data = api.getAdminDashboard(currentUser.id);
@@ -51,7 +51,7 @@ export default function AdminDashboard() {
     fetchDashboardData();
   }, [currentUser]);
 
-  // --- Handlers ---
+  //  Handlers 
   const handleCreateAssignment = (e) => {
     e.preventDefault();
     if (!title || !driveLink || !currentUser) return;
@@ -79,7 +79,7 @@ export default function AdminDashboard() {
     }
   };
 
-  // *** NEW: HANDLER TO OPEN THE EDIT MODAL ***
+  //  NEW: HANDLER TO OPEN THE EDIT MODAL 
   const openEditModal = (student) => {
     setCurrentStudentToEdit(student);
     setNewStudentName(student.name); // Pre-fill the input
@@ -87,7 +87,7 @@ export default function AdminDashboard() {
     setIsManageStudentModalOpen(false); // Close the manage modal
   };
 
-  // *** NEW: HANDLER TO SAVE THE STUDENT'S NEW NAME ***
+  //  NEW: HANDLER TO SAVE THE STUDENT'S NEW NAME 
   const handleUpdateStudentName = (e) => {
     e.preventDefault();
     if (!newStudentName || !currentStudentToEdit) return;
@@ -100,7 +100,7 @@ export default function AdminDashboard() {
     setNewStudentName('');
 
     fetchDashboardData(); // Refresh dashboard
-    // We don't need to re-fetch all students *unless* the manage modal is re-opened
+    // We don't need to re-fetch all students unless the manage modal is re-opened
   };
 
 
@@ -149,7 +149,7 @@ export default function AdminDashboard() {
         )}
       </div>
 
-      {/* --- "CREATE ASSIGNMENT" MODAL --- */}
+      {/*  "CREATE ASSIGNMENT" MODAL  */}
       {isAssignmentModalOpen && (
         <Modal onClose={() => setIsAssignmentModalOpen(false)}>
           <h3 className="text-xl font-semibold mb-6">New Assignment</h3>
@@ -172,7 +172,7 @@ export default function AdminDashboard() {
         </Modal>
       )}
 
-      {/* --- "ADD STUDENT" MODAL --- */}
+      {/*  "ADD STUDENT" MODAL  */}
       {isStudentModalOpen && (
         <Modal onClose={() => setIsStudentModalOpen(false)}>
           <h3 className="text-xl font-semibold mb-6">Add New Student</h3>
@@ -190,7 +190,7 @@ export default function AdminDashboard() {
         </Modal>
       )}
 
-      {/* --- "MANAGE STUDENTS" MODAL --- */}
+      {/* - "MANAGE STUDENTS" MODAL  */}
       {isManageStudentModalOpen && (
         <Modal onClose={() => setIsManageStudentModalOpen(false)}>
           <h3 className="text-xl font-semibold mb-6">Manage Students</h3>
@@ -199,7 +199,7 @@ export default function AdminDashboard() {
               allStudents.map(student => (
                 <div key={student.id} className="flex justify-between items-center p-3 bg-gray-100 rounded-lg">
                   <span className="text-gray-900">{student.name}</span>
-                  {/* --- NEW BUTTON GROUP (EDIT/DELETE) --- */}
+                  {/*  NEW BUTTON GROUP (EDIT/DELETE) - */}
                   <div className="flex gap-2">
                     <button
                       onClick={() => openEditModal(student)}

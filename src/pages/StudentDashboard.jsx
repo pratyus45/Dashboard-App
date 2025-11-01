@@ -16,7 +16,7 @@ export default function StudentDashboard() {
   // --- STATE FOR THE DOUBLE-VERIFICATION ---
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAssignment, setSelectedAssignment] = useState(null);
-  // --- END ---
+ 
 
   const fetchData = () => {
     if (currentUser) {
@@ -29,7 +29,7 @@ export default function StudentDashboard() {
     fetchData();
   }, [currentUser]);
 
-  // --- STEP 1: "Submit" button is clicked ---
+  
   // This function just opens the modal
   const handleSubmitClick = (assignment) => {
     // Only open modal if the assignment is 'pending'
@@ -39,7 +39,7 @@ export default function StudentDashboard() {
     }
   };
 
-  // --- STEP 2: "Confirm" button is clicked ---
+
   // This function does the actual API call
   const handleConfirmSubmit = () => {
     if (!selectedAssignment) return;

@@ -7,7 +7,7 @@ export default function Layout() {
   return (
     <div className="min-h-full w-full bg-gray-50">
       
-      {/* --- NAVBAR --- */}
+      {/* - NAVBAR - */}
       <nav className="bg-white shadow-sm border-b border-gray-200">
         {/* We use max-w-7xl to center the nav content on wide screens */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,7 +36,7 @@ export default function Layout() {
         </div>
       </nav>
 
-      {/* --- MAIN CONTENT --- */}
+      {/* - MAIN CONTENT */}
       <main>
         {/* This centers your dashboard content nicely */}
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 px-4">
