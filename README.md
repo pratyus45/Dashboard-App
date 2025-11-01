@@ -1,16 +1,60 @@
-# React + Vite
+React Assignment Dashboard 
+This is a simple dashboard for managing student assignments. It's built with React and Tailwind CSS and runs entirely in your browser. All data (students, assignments, submissions) is saved in your browser's localStorage to simulate a real database.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ ## Features
+This app has two roles: Admin and Student.
 
-Currently, two official plugins are available:
+## As an Admin (Professor):
+Create Assignments: Add new assignments with a title and a Google Drive link.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## View Dashboard:
+ See all assignments and a progress bar for how many students have submitted.
 
-## React Compiler
+See Who Submitted: Click an assignment to see a list of all students and their individual status (Submitted or Pending).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Add Students: Add new students to the system.
 
-## Expanding the ESLint configuration
+Manage Students: Edit the names of existing students or delete them.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## As a Student:
+View Assignments: See a clean list of only your own assignments.
+
+See Status: Clearly see if an assignment is "Pending" or "Submitted."
+
+Submit with Confirmation: When you submit, a popup asks you to confirm (the "double-verification" flow).
+
+## Tech Stack
+React.js: For building the user interface.
+
+Tailwind CSS: For all styling.
+
+React Router: For switching between the Login and Dashboard pages.
+
+React Context: To keep track of who is logged in.
+
+LocalStorage: To save all data in your browser.
+
+
+## How to Run Locally
+Follow these 5 steps to run the project on your computer.
+
+Clone the project (or download the files):
+
+Bash
+
+git clone [your-github-repo-url]
+Go into the project folder:
+
+Bash
+
+cd [your-project-folder-name]
+Install all the needed packages:
+
+Bash
+
+npm install
+Start the app:
+
+Bash
+
+npm run dev
